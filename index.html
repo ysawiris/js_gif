@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Gif Search</title>
+</head>
+
+<body>
+    <form id="search-form">
+        <input id="input-search" placeholder="Search">
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="container">
+        <!-- Gifs here -->
+    </div>
+
+    <script>
+        const searchForm = document.getElementById('search-form')
+        const inputSearch = document.getElementById('input-search')
+        const container = document.getElementById('container')
+
+        searchForm.addEventListener('submit', submitSearch)
+
+
+        function submitSearch(e) {
+            // Get the value input in the search input
+            e.preventDefault()
+            const query = inputSearch.value
+            fetchData(query)
+        }
+
+        function fetchData(search = 'cats') {
+            const api = 'FM5BftEtOsDyFerJTznWLpaR2onnv8HI'
+            const path = `https://api.giphy.com/v1/gifs/search?api_key=${api}&q=${search}`
+
+            fetch(path)
+                .then(function(res) {
+                    return res.json()
+                })
+                .then(function(json) {
+                    handleData(json)
+                })
+                .catch(function(err) {
+                    console.log(err.message)
+                })
+        }
+
+        function handleData(json) {
+            const data = json.data
+            let htmlStr = ''
+            for (let i = 0; i < data.length; i += 1) {
+                const image = data[i].images.fixed_height_small
+                const src = image.url
+                const width = image.width
+                const height = image.height
+                htmlStr += `<img src="${src}" width="${width}" height="${height}">`
+
+            }
+            // Set the innHTML of #container
+            container.innerHTML = htmlStr
+        }
+    </script>
+
+
+
+</body>
+
+</html>
