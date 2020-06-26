@@ -1,0 +1,21 @@
+#container {
+    display: grid;
+    padding: 2rem;
+    grid-template-columns: auto auto auto auto;
+}
+
+#container > img {
+    margin: auto;
+    padding: 5px;
+    border: 1px;
+}
+
+#search-form {
+    display: flex;
+    justify-content: center;
+}
+
+body {
+    min-width: 768px;
+    background-color: ;
+}
