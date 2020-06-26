@@ -8,6 +8,9 @@
     </head>
 
     <body>
+        <div class="container">
+            <img src="./gif_title.png" alt="title" class="title" />
+        </div>
         <form id="search-form">
             <input id="input-search" placeholder="Search" />
             <button type="submit">Submit</button>
@@ -50,7 +53,7 @@
             function handleData(json) {
                 const data = json.data;
                 let htmlStr = "";
-                for (let i = 0; i < data.length; i += 1) {
+                for (let i = 0; i < data.length - 1; i += 1) {
                     const image = data[i].images.fixed_height_small;
                     const src = image.url;
                     const width = image.width;

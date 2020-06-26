@@ -2,3 +2,37 @@
 $width: 100px;
 $hieght: 100px;
 $border: 1px;
+$padding: 1rem;
+
+#container {
+    display: grid;
+    padding: $padding * 2;
+    grid-template-columns: auto auto auto auto;
+
+    img {
+        margin: auto;
+        padding: $padding;
+        border: 1rem;
+    }
+}
+
+#search-form {
+    display: flex;
+    justify-content: center;
+}
+
+body {
+    min-width: 768px;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(
+        90deg,
+        rgba(2, 0, 36, 1) 0%,
+        rgba(110, 9, 121, 1) 0%,
+        rgba(0, 212, 255, 1) 100%
+    );
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
